@@ -3,7 +3,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import {terser} from 'rollup-plugin-terser';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import summary from 'rollup-plugin-summary';
-import replace from '@rollup/plugin-replace'
 
 export default {
   input: 'dist/src/git-view.js',
@@ -13,10 +12,6 @@ export default {
    
     // Resolve bare module specifiers to relative paths
     resolve(),
-    replace({
-      'Object.defineProperty(exports,"__esModule",{value:!0});': '',
-      delimiters: ['\n', '\n']
-    }),
 
     // Minify HTML template literals
     minifyHTML(),

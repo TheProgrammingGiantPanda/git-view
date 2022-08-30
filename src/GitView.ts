@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
@@ -31,6 +31,8 @@ export class GitView extends LitElement {
   }
 
   render() {
-    return html` <pre><code>${unsafeHTML(this._items)} </code></pre>`;
+    return this._items
+      ? html`<pre><code>${unsafeHTML(this._items)} </code></pre>`
+      : html`<pre><code>LOADING...</code></pre>`;
   }
 }

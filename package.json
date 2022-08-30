@@ -1,14 +1,20 @@
 {
-  "name": "git-view",
+  "name": "@theprogrammingiantpanda/git-view",
   "description": "Webcomponent git-view following open-wc recommendations",
   "license": "MIT",
-  "author": "git-view",
+  "author": "TheProgrammingGiantPanda",
   "version": "0.0.0",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
-    ".": "./dist/src/index.js",
-    "./git-view.js": "./dist/src/git-view.js"
+    ".": "./public/git-view.js",
+    "./git-view.js": "./public/git-view.js"
+  },
+  "files": [
+    "./public/git-view.js"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "analyze": "cem analyze --litelement",
