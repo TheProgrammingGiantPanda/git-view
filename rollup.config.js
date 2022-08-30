@@ -1,0 +1,42 @@
+import {copy} from '@web/rollup-plugin-copy';
+import resolve from '@rollup/plugin-node-resolve';
+import {terser} from 'rollup-plugin-terser';
+import minifyHTML from 'rollup-plugin-minify-html-literals';
+import summary from 'rollup-plugin-summary';
+import replace from '@rollup/plugin-replace'
+
+export default {
+  input: 'dist/src/git-view.js',
+  plugins: [
+    // Entry point for application build; can specify a glob to build multiple
+    // HTML files for non-SPA app
+   
+    // Resolve bare module specifiers to relative paths
+    resolve(),
+    replace({
+      'Object.defineProperty(exports,"__esModule",{value:!0});': '',
+      delimiters: ['\n', '\n']
+    }),
+
+    // Minify HTML template literals
+    minifyHTML(),
+    // Minify JS
+    terser({
+      ecma: 2020,
+      module: true,
+      warnings: true,
+    }),
+    // Print bundle summary
+    summary(),
+    // Optional: copy any static assets to build directory
+    copy({
+      patterns: ['assets/**/*'],
+    }),
+  ],
+  output: {
+    file: 'public/git-view.js',
+    name: 'public/git-view',
+    format: 'cjs'
+  },
+  preserveEntrySignatures: 'strict',
+};
