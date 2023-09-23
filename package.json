@@ -3,7 +3,7 @@
   "description": "Webcomponent git-view following open-wc recommendations",
   "license": "MIT",
   "author": "TheProgrammingGiantPanda",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
@@ -20,7 +20,7 @@
     "analyze": "cem analyze --litelement",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "build": "tsc && rollup -c rollup.config.js",
-    "prepublish": "tsc && npm run analyze -- --exclude dist",
+    "prepublish": "tsc",
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore"
   },

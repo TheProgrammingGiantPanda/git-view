@@ -34,13 +34,12 @@ class GitLoader {
         if (next.includes(startTag)) {
           // eslint-disable-next-line no-param-reassign
           accum.save = true;
-        }
-        if (accum.save) {
+        } else if (accum.save) {
           accum.lines.push(next);
         }
         return accum;
       },
-      { save: true, lines: [] }
+      { save: false, lines: [] }
     ).lines;
   }
 }
